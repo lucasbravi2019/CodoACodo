@@ -102,6 +102,10 @@ ul {
     text-align: center;
 }
 
+.mb {
+    margin-bottom: 5px;
+}
+
 .opacity-50 {
     opacity: .5;
 }
