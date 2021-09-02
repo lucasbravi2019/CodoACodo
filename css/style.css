@@ -1,0 +1,242 @@
+:root {
+    --main-color: #ffffffdc;
+    --secondary-color: #5F94D9;
+    --border-color: #8FAFD9;
+    --background-color: #010326;
+}
+
+
+/* apply a natural box layout model to all elements, but allowing components to change */
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--background-color);
+}
+
+a {
+    color: var(--main-color);
+    text-decoration: none;
+    display: block;
+    transition: color 0.3s ease-in-out;
+    padding: 0 0.5em;
+    margin-bottom: 5px;
+}
+
+a:hover {
+    color: var(--secondary-color);
+    margin-bottom: 0;
+    border-bottom: 5px solid var(--border-color);
+}
+
+p {
+    color: var(--main-color);
+}
+
+h1 {
+    margin: 0;
+    padding: .8em;
+    font-size: 3em;
+}
+
+li {
+    list-style: none;
+}
+
+ul {
+    padding: 0;
+}
+
+#nav {
+    text-align: center;
+    padding: 1em;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1em;
+    max-width: 30%;
+    margin: 0 auto;
+}
+
+#hero {
+    height: 70vh;
+}
+
+#bg {
+    background-image: url("../img/airport.jpg");
+    height: 70vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: .5;
+}
+
+#footer {
+    text-align: center;
+    padding: 1em;
+    font-weight: bold;
+    color: var(--main-color);
+}
+
+.text-primary {
+    color: var(--main-color);
+}
+
+.text-secondary {
+    color: var(--secondary-color);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.opacity-50 {
+    opacity: .5;
+}
+
+.bg-primary {
+    background-color: var(--background-color);
+}
+
+.bg-secondary {
+    background-color: var(--secondary-color)
+}
+
+.absolute {
+    position: absolute;
+}
+
+.relative {
+    position: relative;
+}
+
+.z-1 {
+    z-index: 1;
+}
+
+.z-2 {
+    z-index: 2;
+}
+
+.px-10 {
+    padding: 0 10em;
+}
+
+.mx-auto {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.my-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.block {
+    display: block;
+}
+
+.h-full {
+    height: 100%;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.grid {
+    display: grid;
+}
+
+.grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.gap-4 {
+    gap: 1em;
+}
+
+.max-w-50 {
+    max-width: 50%;
+}
+
+.w-80 {
+    width: 80%;
+}
+
+.py-3 {
+    padding-top: 0.75em;
+    padding-bottom: 0.75em;
+}
+
+.px-3 {
+    padding-right: 0.75em;
+    padding-left: 0.75em;
+}
+
+.p-3 {
+    padding: 0.75em;
+}
+
+.m-3 {
+    margin: .75em;
+}
+
+.my-3 {
+    margin-top: .75em;
+    margin-bottom: .75em;
+}
+
+.text-xl {
+    font-size: 1.5em;
+}
+
+.btn {
+    width: max-content;
+    border: none;
+}
+
+.btn:hover {
+    border: none;
+}
+
+.rounded-sm {
+    border-radius: .1em;
+}
+
+.rounded-md {
+    border-radius: .2em;
+}
+
+.btn-primary {
+    background-color: var(--border-color);
+    color: var(main-color);
+}

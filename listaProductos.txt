@@ -1,0 +1,50 @@
+[{
+    "destino": "Argentina",
+    "foto": "img/argentina.png",
+    "precio": 123
+},
+{
+    "destino": "Canada",
+    "foto": "img/canada.jpg",
+    "precio": 345
+},
+{
+    "destino": "Rusia",
+    "foto": "img/rusia.jpg",
+    "precio": 345
+},
+{
+    "destino": "Holanda",
+    "foto": "img/holanda.jpg",
+    "precio": 345
+},
+{
+    "destino": "Escocia",
+    "foto": "img/escocia.jpg",
+    "precio": 345
+},
+{
+    "destino": "Francia",
+    "foto": "img/francia.jpg",
+    "precio": 345
+},
+{
+    "destino": "España",
+    "foto": "img/espana.jpg",
+    "precio": 345
+},
+{
+    "destino": "Brasil",
+    "foto": "img/brasil.jpg",
+    "precio": 345
+},
+{
+    "destino": "Italia",
+    "foto": "img/italia.jpg",
+    "precio": 345
+},
+{
+    "destino": "Alemania",
+    "foto": "img/alemania.jpg",
+    "precio": 345
+}]
