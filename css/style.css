@@ -63,11 +63,16 @@ ul {
 #nav {
     text-align: center;
     padding: 1em;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1em;
-    max-width: 30%;
-    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+#nav a {
+    margin: 0 1em 5px 1em;
+}
+
+#nav a:hover {
+    margin-bottom: 0;
 }
 
 #hero {
