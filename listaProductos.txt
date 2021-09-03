@@ -9,27 +9,27 @@
     "precio": 345
 },
 {
-    "destino": "Rusia",
+    "destino": "Russia",
     "foto": "img/rusia.jpg",
     "precio": 345
 },
 {
-    "destino": "Holanda",
+    "destino": "Holland",
     "foto": "img/holanda.jpg",
     "precio": 345
 },
 {
-    "destino": "Escocia",
+    "destino": "Scotland",
     "foto": "img/escocia.jpg",
     "precio": 345
 },
 {
-    "destino": "Francia",
+    "destino": "France",
     "foto": "img/francia.jpg",
     "precio": 345
 },
 {
-    "destino": "España",
+    "destino": "Spain",
     "foto": "img/espana.jpg",
     "precio": 345
 },
@@ -39,12 +39,12 @@
     "precio": 345
 },
 {
-    "destino": "Italia",
+    "destino": "Italy",
     "foto": "img/italia.jpg",
     "precio": 345
 },
 {
-    "destino": "Alemania",
+    "destino": "Germany",
     "foto": "img/alemania.jpg",
     "precio": 345
 }]

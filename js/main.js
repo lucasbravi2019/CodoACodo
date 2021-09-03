@@ -81,16 +81,16 @@ async function listaProductos(divPadre) {
     let response = await fetch("../listaProductos.txt")
     let data = await response.json()
     data.forEach(prod => {
+        let card = document.createElement("div")
         let div = document.createElement("div")
         let producto = document.createElement("p")
         let imagen = document.createElement("img")
+        let flyings = document.createElement("h4")
+        flyings.innerText = "Flyings"
         imagen.setAttribute("src", prod.foto)
-        imagen.style.height = "50vh"
+        imagen.style.height = "25vh"
         imagen.style.width = "100%"
         imagen.style.objectFit = "cover"
-        imagen.style.borderRadius = "4px"
-        imagen.style.padding = "5px"
-        imagen.style.border = "2px solid #ddd"
         imagen.style.filter = "grayscale(100%)"
         imagen.style.transition = "all 0.5s ease-in-out"
         imagen.addEventListener("mouseenter", function() {
@@ -99,13 +99,25 @@ async function listaProductos(divPadre) {
         imagen.addEventListener("mouseleave", function() {
             imagen.style.filter = "grayscale(100%)"
         })
+        imagen.style.borderRadius = "0.5em 0.5em 0 0"
         let precio = document.createElement("p")
-        producto.innerText = prod.destino
+        precio.style.color = "#444"
+        producto.style.color = "#444"
+        producto.innerText = "Fly to " + prod.destino
         precio.innerText = "$ " + prod.precio
+        card.style.display = "grid"
+        card.style.gridTemplateRows = "repeat(2, 1fr)"
+        card.style.border = "1px solid #ccc"
+        card.style.borderRadius = "0.5em"
+        div.style.backgroundColor = "#eee"
+        div.style.borderRadius = "0 0 0.5em 0.5em"
+        div.style.padding = "0 0 0 0.75em"
+        div.appendChild(flyings)
         div.appendChild(producto)
-        div.appendChild(imagen)
         div.appendChild(precio)
-        divPadre.appendChild(div)
+        card.appendChild(imagen)
+        card.appendChild(div)
+        divPadre.appendChild(card)
     })
 }
 
