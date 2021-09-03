@@ -70,6 +70,70 @@ async function aboutF() {
     app.innerHTML = data
 }
 
+async function buy(prod) {
+    let response = await fetch("../templates/bought.html")
+    let data = await response.text()
+    let app = document.getElementById("app")
+    app.innerHTML = data
+    let producto = document.createElement("p")
+    let numberTickets = document.createElement("p")
+    numberTickets.innerText = "Number of tickets"
+    let quantity = document.createElement("input")
+    quantity.setAttribute("type", "number")
+    let pay = 0
+    let total = document.createElement("p")
+    total.innerText = "Total: $ 0.00"
+    quantity.addEventListener("change", (e) => {
+        pay = quantity.value
+        total.innerText = "Total: " + pay * prod.precio
+    })
+    let precio = document.createElement("p")
+    producto.innerText = "Flying ticket with destiny: " + prod.destino
+    precio.innerText = "Price: $ " + prod.precio
+    let buy = document.getElementById("buy")
+    let payButton = document.createElement("a")
+    payButton.setAttribute("href", "#bought")
+    payButton.innerText = "Pay"
+    payButton.style.cssText = `
+    display: block;
+    width: max-content;
+    margin: 0 auto;
+    border: 2px solid var(--border-color);
+    padding: 0.75em;
+    `
+    buy.appendChild(producto)
+    buy.appendChild(numberTickets)
+    buy.appendChild(quantity)
+    buy.appendChild(precio)
+    buy.appendChild(total)
+    buy.appendChild(payButton)
+    payButton.addEventListener("click", (e) => {
+        e.preventDefault()
+        payButton.disabled = true
+        bought()
+        payButton.style.opacity = 0.5
+    })
+    console.log(prod)
+}
+
+async function bought() {
+    let app = document.getElementById("app")
+    let message = document.createElement("h3")
+    message.style.cssText = `
+    background-color: green;
+    text-align: center;
+    font-weight: bold;
+    margin: 0 auto;
+    width: 50%;
+    padding: .75em;
+    color: var(--main-color);
+    `
+    message.innerText = "Ticket bought successfully"
+    console.log(message)
+    app.innerHTML = ""
+    app.appendChild(message)
+}
+
 async function footer() {
     let response = await fetch("../templates/footer.html")
     let data = await response.text()
@@ -86,6 +150,23 @@ async function listaProductos(divPadre) {
         let producto = document.createElement("p")
         let imagen = document.createElement("img")
         let flyings = document.createElement("h4")
+        let button = document.createElement("a")
+        button.setAttribute("src", "#bought")
+        button.innerText = "Buy"
+        button.className = "text-secondary"
+        button.style.cssText = `
+        display: block;
+        margin: 0 auto;
+        width: max-content;
+        border: 2px solid var(--border-color);
+        border-radius: 0.5em;
+        padding: 0.75em;
+        cursor: pointer;
+        `
+        button.addEventListener("click", (e) => {
+            e.preventDefault()
+            buy(prod)
+        })
         flyings.innerText = "Flyings"
         imagen.setAttribute("src", prod.foto)
         imagen.style.height = "25vh"
@@ -115,6 +196,7 @@ async function listaProductos(divPadre) {
         div.appendChild(flyings)
         div.appendChild(producto)
         div.appendChild(precio)
+        div.appendChild(button)
         card.appendChild(imagen)
         card.appendChild(div)
         divPadre.appendChild(card)
