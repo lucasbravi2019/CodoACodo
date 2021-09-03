@@ -111,6 +111,12 @@ ul {
     color: var(--secondary-color);
 }
 
+@media (max-width: 768px) {
+    .sm-text-center {
+        text-align: center;
+    }
+}
+
 .text-center {
     text-align: center;
 }
