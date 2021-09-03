@@ -90,6 +90,14 @@ ul {
     color: var(--main-color);
 }
 
+.w-100 {
+    width: 100vw;
+}
+
+.cover {
+    object-fit: contain;
+}
+
 .text-primary {
     color: var(--main-color);
 }
@@ -170,6 +178,10 @@ ul {
 
 .justify-center {
     justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
 }
 
 .grid {

@@ -63,6 +63,13 @@ async function contacto() {
 
 }
 
+async function aboutF() {
+    let response = await fetch("../templates/about.html")
+    let data = await response.text()
+    let app = document.getElementById("app")
+    app.innerHTML = data
+}
+
 async function footer() {
     let response = await fetch("../templates/footer.html")
     let data = await response.text()
@@ -139,7 +146,7 @@ function listeners() {
         e.preventDefault()
         if (window.location.hash != "#about") {
             window.location.hash = "#about"
-            console.log("about")
+            aboutF()
         }
     })
 }
