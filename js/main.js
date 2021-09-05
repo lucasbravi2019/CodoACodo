@@ -37,30 +37,131 @@ async function contacto() {
     let app = document.getElementById("app")
     app.innerHTML = data
     let submit = document.getElementById("send")
-    submit.style.cursor = "pointer"
+    submitDisabled(submit)
+    let nombre = document.getElementById("person")
+    let phone = document.getElementById("phone")
+    let email = document.getElementById("email")
+    nombre.addEventListener('input', function(e) {
+        if (e.target.value == "") {
+            validateMessage(nombre)
+        } else {
+            deleteValidateMessage(nombre)
+        }
+        if (nombre.value != "" && phone.value != "" && email.value != "" && email.value.includes("@")) {
+            submitEnabled(submit)
+        } else {
+            submitDisabled(submit)
+        }
+
+    })
+    phone.addEventListener('input', function(e) {
+        if (e.target.value == "") {
+            validateMessage(phone)
+        } else {
+            deleteValidateMessage(phone)
+        }
+
+        if (nombre.value != "" && phone.value != "" && email.value != "" && email.value.includes("@")) {
+            submitEnabled(submit)
+        } else {
+            submitDisabled(submit)
+        }
+    })
+    email.addEventListener('input', function(e) {
+        if (e.target.value == "" && !e.target.value.includes("@")) {
+            validateMessage(email)
+        } else {
+            if (!e.target.value.includes("@") && e.target.value != "") {
+                validateMessage(email)
+            } else {
+                deleteValidateMessage(email)
+            }
+        }
+        if (nombre.value != "" && phone.value != "" && email.value != "" && email.value.includes("@")) {
+            submitEnabled(submit)
+        } else {
+            submitDisabled(submit)
+        }
+    })
     submit.addEventListener("click", function(e) {
         e.preventDefault()
-        let nombre = document.getElementById("person")
+        if (document.getElementById("submitForm") == undefined) {
+            var mensaje = document.createElement("p")
+            mensaje.setAttribute("id", "submitForm")
+            app.prepend(mensaje)
+        }
+        var mensaje = document.getElementById("submitForm")
+        if (nombre.value == "" || phone.value == "" || email.value == "") {
+            mensaje.innerText = "Fill all the inputs to send the form"
+            mensajeStyleError(mensaje)
+        } else {
+            if (mensaje.innerText != "Message sent succesfully. We will contact you in a while.") {
+                mensaje.innerText = "Message sent succesfully. We will contact you in a while."
+            }
+            mensajeStyleSuccess(mensaje)
+        }
+        submitDisabled(submit)
         nombre.value = ""
-        let phone = document.getElementById("phone")
         phone.value = ""
-        let email = document.getElementById("email")
         email.value = ""
-        let mensaje = document.createElement("p")
-        mensaje.innerText = "Message sent succesfully. We will contact you in a while."
-        mensaje.style.backgroundColor = "green"
-        mensaje.style.width = "70%"
-        mensaje.style.padding = "0.75em"
-        mensaje.style.margin = "1em auto"
-        mensaje.style.textAlign = "center"
-        app.prepend(mensaje)
-        submit.disabled = true
-        submit.style.cursor = "default"
-        submit.style.opacity = 0.5
     })
+}
 
+function validateMessage(child) {
+    if (!document.getElementById(`validate${child.name}`)) {
+        var mensaje = document.createElement("p")
+        mensaje.setAttribute("id", `validate${child.name}`)
+        mensajeStyleError(mensaje)
+        var padre = child.parentElement.appendChild(mensaje)
+    }
+    var mensaje = document.getElementById(`validate${child.name}`)
+    mensaje.className = "col-2"
+    if (child.value == "" && !child.value.includes("@")) {
+        mensaje.innerText = `Please fill the ${child.name}`;
+    }
+    if (!child.value.includes("@") && child.value != "") {
+        mensaje.innerText = "Please enter a valid email"
+    }
+}
 
+function deleteValidateMessage(child) {
+    console.log(child.name)
+    if (document.getElementById(`validate${child.name}`)) {
+        let mensaje = document.getElementById(`validate${child.name}`)
+        mensaje.remove()
+    }
+}
 
+function mensajeStyleSuccess(mensaje) {
+    mensaje.style.cssText = `
+    background-color: green; 
+    width: 70%;
+    padding: .75em;
+    margin: 1em auto;
+    text-align: center;
+    `
+}
+
+function mensajeStyleError(mensaje) {
+    mensaje.style.cssText = `
+    background-color: red; 
+    width: 70%;
+    padding: .75em;
+    margin: 1em auto;
+    text-align: center;
+    `
+}
+
+function submitDisabled(submit) {
+    submit.style.opacity = 0.5
+    submit.style.cursor = "default"
+    submit.disabled = true
+}
+
+function submitEnabled(submit) {
+    submit.style.opacity = 1
+    submit.style.cursor = "pointer"
+    submit.disabled = false
 }
 
 async function aboutF() {
@@ -71,6 +172,7 @@ async function aboutF() {
 }
 
 async function buy(prod) {
+    window.location.hash = "#buy"
     let response = await fetch("../templates/bought.html")
     let data = await response.text()
     let app = document.getElementById("app")
@@ -80,27 +182,39 @@ async function buy(prod) {
     numberTickets.innerText = "Number of tickets"
     let quantity = document.createElement("input")
     quantity.setAttribute("type", "number")
+    quantity.setAttribute("min", 0)
+    quantity.setAttribute("value", 0)
+    quantity.style.cssText = "padding: 0.5em; text-align: center;"
     let pay = 0
     let total = document.createElement("p")
     total.innerText = "Total: $ 0.00"
-    quantity.addEventListener("change", (e) => {
-        pay = quantity.value
-        total.innerText = "Total: " + pay * prod.precio
-    })
-    let precio = document.createElement("p")
-    producto.innerText = "Flying ticket with destiny: " + prod.destino
-    precio.innerText = "Price: $ " + prod.precio
-    let buy = document.getElementById("buy")
-    let payButton = document.createElement("a")
-    payButton.setAttribute("href", "#bought")
-    payButton.innerText = "Pay"
+    let payButton = document.createElement("button")
+    payButton.setAttribute("type", "submit")
     payButton.style.cssText = `
     display: block;
     width: max-content;
     margin: 0 auto;
     border: 2px solid var(--border-color);
     padding: 0.75em;
+    color: var(--secondary-color)
     `
+    payButton.setAttribute("href", "#bought")
+    payButton.innerText = "Pay"
+    submitDisabled(payButton)
+    console.log(payButton)
+    quantity.addEventListener("input", (e) => {
+        pay = quantity.value
+        total.innerText = "Total: " + pay * prod.precio
+        if (e.target.value > 0) {
+            submitEnabled(payButton)
+        } else {
+            submitDisabled(payButton)
+        }
+    })
+    let precio = document.createElement("p")
+    producto.innerText = "Flying ticket with destiny: " + prod.destino
+    precio.innerText = "Price: $ " + prod.precio
+    let buy = document.getElementById("buy")
     buy.appendChild(producto)
     buy.appendChild(numberTickets)
     buy.appendChild(quantity)
@@ -112,11 +226,13 @@ async function buy(prod) {
         payButton.disabled = true
         bought()
         payButton.style.opacity = 0.5
+
     })
     console.log(prod)
 }
 
 async function bought() {
+    window.location.hash = "#bought"
     let app = document.getElementById("app")
     let message = document.createElement("h3")
     message.style.cssText = `
@@ -163,6 +279,14 @@ async function listaProductos(divPadre) {
         padding: 0.75em;
         cursor: pointer;
         `
+        button.addEventListener("mouseenter", () => {
+            button.style.backgroundColor = "var(--secondary-color)"
+            button.style.color = "var(--main-color)"
+        })
+        button.addEventListener("mouseleave", () => {
+            button.style.backgroundColor = "var(--button-color)"
+            button.style.color = "var(--secondary-color)"
+        })
         button.addEventListener("click", (e) => {
             e.preventDefault()
             buy(prod)

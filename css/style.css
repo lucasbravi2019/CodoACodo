@@ -1,6 +1,7 @@
 :root {
     --main-color: #ffffffdc;
     --secondary-color: #5F94D9;
+    --button-color: #eeeeee;
     --border-color: #8FAFD9;
     --background-color: #010326;
 }
@@ -202,6 +203,9 @@ ul {
 @media (min-width: 768px) {
     .grid-cols-2 {
         grid-template-columns: repeat(2, 1fr);
+    }
+    .col-2 {
+        grid-column: 1/3;
     }
 }
 
