@@ -4,21 +4,19 @@ async function navigation() {
     let nav = document.getElementById("nav")
     nav.innerHTML = data
     listeners()
-    let dropdown = document.getElementById("dropdown")
-    dropdown.addEventListener("click", (e) => {
-        let navigation = document.getElementById("navigation")
-        navigation.classList.toggle("hidden")
-    })
+    dropdown()
 }
 
-async function hero() {
+async function hero(home, products, contact, about) {
     let response = await fetch("../templates/hero.html")
     let data = await response.text()
     let app = document.getElementById("app")
     app.innerHTML = data
-    let products = document.getElementById("tickets")
-    products.addEventListener("click", (e) => {
+    let productos = document.getElementById("tickets")
+    productos.addEventListener("click", (e) => {
         e.preventDefault()
+        resetActiveLinks(home, products, contact, about)
+        activeLink(products)
         if (window.location.hash != "#products") {
             window.location.hash = "#products"
             let app = document.getElementById("app")
@@ -381,19 +379,19 @@ function activeLink(link) {
 
 function listeners() {
     let home = document.getElementById("home")
-    home.classList.remove()
     let products = document.getElementById("products")
     let contact = document.getElementById("contact")
     let about = document.getElementById("about")
     resetActiveLinks(home, products, contact, about)
     activeLink(home)
+    hero(home, products, contact, about)
     home.addEventListener("click", (e) => {
         e.preventDefault()
         if (window.location.hash != "#home" && window.location.hash != "") {
-            console.log(window.location.pathname)
             window.location.hash = "#home"
+            document.getElementById("navigation").classList.add("hidden")
             let app = document.getElementById("app")
-            app.innerHTML = hero()
+            app.innerHTML = hero(home, products, contact, about)
             resetActiveLinks(home, products, contact, about)
             activeLink(home)
             document.getElementById("social-media").classList.replace("hidden", "flex")
@@ -405,6 +403,7 @@ function listeners() {
         activeLink(products)
         if (window.location.hash != "#products") {
             window.location.hash = "#products"
+            document.getElementById("navigation").classList.add("hidden")
             let app = document.getElementById("app")
             app.innerHTML = tickets()
 
@@ -417,6 +416,7 @@ function listeners() {
         activeLink(contact)
         if (window.location.hash != "#contact") {
             window.location.hash = "#contact"
+            document.getElementById("navigation").classList.add("hidden")
             let app = document.getElementById("app")
             app.innerHTML = contacto()
             document.getElementById("social-media").classList.replace("flex", "hidden")
@@ -428,18 +428,30 @@ function listeners() {
         activeLink(about)
         if (window.location.hash != "#about") {
             window.location.hash = "#about"
+            document.getElementById("navigation").classList.add("hidden")
             aboutF()
             document.getElementById("social-media").classList.replace("hidden", "flex")
         }
     })
 }
 
+function dropdown() {
+    var dropdown = document.getElementById("dropdown")
+    var navigation = document.getElementById("navigation")
+    dropdown.addEventListener("click", function() {
+        navigation.classList.toggle("hidden")
+    })
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     window.location.hash = ""
-
     navigation()
+    let home = document.getElementById("home")
+    let products = document.getElementById("products")
+    let contact = document.getElementById("contact")
+    let about = document.getElementById("about")
     if (window.location.hash == "") {
-        hero()
+        hero(home, products, contact, about)
     }
     footer()
 });
