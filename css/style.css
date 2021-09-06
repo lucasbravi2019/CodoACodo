@@ -37,9 +37,16 @@ a {
     margin-bottom: 5px;
 }
 
+form {
+    margin: 0 0.5em;
+}
+
+fieldset {
+    padding: 0;
+}
+
 a:hover {
     color: var(--secondary-color);
-    margin-bottom: 0;
     border-bottom: 5px solid var(--border-color);
 }
 
@@ -49,8 +56,8 @@ p {
 
 h1 {
     margin: 0;
-    padding: .8em;
     font-size: 3em;
+    width: 100%;
 }
 
 li {
@@ -62,18 +69,53 @@ ul {
 }
 
 #nav {
-    text-align: center;
-    padding: 1em;
-    display: flex;
-    justify-content: center;
+    margin: 1em 0;
 }
 
-#nav a {
-    margin: 0 1em 5px 1em;
+#dropdown {
+    display: block;
+    width: max-content;
 }
 
-#nav a:hover {
+#dropdown a:hover {
+    border: none;
+    margin-bottom: 5px;
+}
+
+@media (min-width: 768px) {
+    #dropdown {
+        display: none;
+    }
+}
+
+#tickets {
+    margin-bottom: 1em;
+}
+
+#navigation {
+    width: max-content;
+    margin: 0 auto;
+}
+
+#navigation a {
+    margin: 0 0 5px 0;
+    padding: 0.5em 0;
+}
+
+#navigation a:hover {
     margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+    #navigation {
+        padding: 1em;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+    #navigation a {
+        margin: 0 0.5em 5px 0.5em;
+    }
 }
 
 #hero {
@@ -98,6 +140,15 @@ ul {
 
 .hidden {
     display: none;
+    transition: display 0.3s ease-in-out;
+}
+
+.mb-3 {
+    margin-bottom: 0.75em;
+}
+
+.mt-3 {
+    margin-top: 0.75em;
 }
 
 .mb-5 {
@@ -241,8 +292,16 @@ ul {
     gap: 1em;
 }
 
-.max-w-50 {
-    max-width: 50%;
+@media (min-width: 468px) {
+    .max-w-80 {
+        max-width: 80%;
+    }
+}
+
+@media (min-width: 768px) {
+    .max-w-50 {
+        max-width: 50%;
+    }
 }
 
 .w-80 {

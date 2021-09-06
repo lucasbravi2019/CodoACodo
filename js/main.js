@@ -4,6 +4,11 @@ async function navigation() {
     let nav = document.getElementById("nav")
     nav.innerHTML = data
     listeners()
+    let dropdown = document.getElementById("dropdown")
+    dropdown.addEventListener("click", (e) => {
+        let navigation = document.getElementById("navigation")
+        navigation.classList.toggle("hidden")
+    })
 }
 
 async function hero() {
@@ -348,7 +353,7 @@ async function listaProductos(divPadre) {
         card.style.borderRadius = "0.5em"
         div.style.backgroundColor = "#eee"
         div.style.borderRadius = "0 0 0.5em 0.5em"
-        div.style.padding = "0 0 0 0.75em"
+        div.style.padding = "0 0.75em 0 0.75em"
         div.appendChild(flyings)
         div.appendChild(producto)
         div.appendChild(precio)
