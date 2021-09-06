@@ -364,11 +364,29 @@ async function listaProductos(divPadre) {
     })
 }
 
+function resetActiveLink(link) {
+    link.classList.remove("active")
+}
+
+function resetActiveLinks(link1, link2, link3, link4) {
+    resetActiveLink(link1)
+    resetActiveLink(link2)
+    resetActiveLink(link3)
+    resetActiveLink(link4)
+}
+
+function activeLink(link) {
+    link.classList.add("active")
+}
+
 function listeners() {
     let home = document.getElementById("home")
+    home.classList.remove()
     let products = document.getElementById("products")
     let contact = document.getElementById("contact")
     let about = document.getElementById("about")
+    resetActiveLinks(home, products, contact, about)
+    activeLink(home)
     home.addEventListener("click", (e) => {
         e.preventDefault()
         if (window.location.hash != "#home" && window.location.hash != "") {
@@ -376,22 +394,27 @@ function listeners() {
             window.location.hash = "#home"
             let app = document.getElementById("app")
             app.innerHTML = hero()
+            resetActiveLinks(home, products, contact, about)
+            activeLink(home)
             document.getElementById("social-media").classList.replace("hidden", "flex")
         }
     })
-
     products.addEventListener("click", (e) => {
         e.preventDefault()
+        resetActiveLinks(home, products, contact, about)
+        activeLink(products)
         if (window.location.hash != "#products") {
             window.location.hash = "#products"
             let app = document.getElementById("app")
             app.innerHTML = tickets()
+
             document.getElementById("social-media").classList.replace("hidden", "flex")
         }
     })
-
     contact.addEventListener("click", (e) => {
         e.preventDefault()
+        resetActiveLinks(home, products, contact, about)
+        activeLink(contact)
         if (window.location.hash != "#contact") {
             window.location.hash = "#contact"
             let app = document.getElementById("app")
@@ -399,9 +422,10 @@ function listeners() {
             document.getElementById("social-media").classList.replace("flex", "hidden")
         }
     })
-
     about.addEventListener("click", (e) => {
         e.preventDefault()
+        resetActiveLinks(home, products, contact, about)
+        activeLink(about)
         if (window.location.hash != "#about") {
             window.location.hash = "#about"
             aboutF()

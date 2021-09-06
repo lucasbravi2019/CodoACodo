@@ -33,8 +33,6 @@ a {
     text-decoration: none;
     display: block;
     transition: color 0.3s ease-in-out;
-    padding: 0 0.5em;
-    margin-bottom: 5px;
 }
 
 form {
@@ -47,7 +45,6 @@ fieldset {
 
 a:hover {
     color: var(--secondary-color);
-    border-bottom: 5px solid var(--border-color);
 }
 
 p {
@@ -75,11 +72,12 @@ ul {
 #dropdown {
     display: block;
     width: max-content;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
 
 #dropdown a:hover {
     border: none;
-    margin-bottom: 5px;
 }
 
 @media (min-width: 768px) {
@@ -98,12 +96,18 @@ ul {
 }
 
 #navigation a {
-    margin: 0 0 5px 0;
-    padding: 0.5em 0;
+    margin-bottom: 5px;
+    padding: 0.8em 0;
 }
 
 #navigation a:hover {
     margin-bottom: 0;
+    border-bottom: 5px solid var(--border-color);
+}
+
+.active {
+    border-bottom: 5px solid var(--border-color);
+    margin-bottom: 0!important;
 }
 
 @media (min-width: 768px) {
