@@ -300,7 +300,7 @@ async function listaProductos(divPadre) {
         let flyings = document.createElement("h4")
         let button = document.createElement("a")
         button.setAttribute("src", "#bought")
-        button.innerText = "Buy"
+        button.innerHTML = '<i class="fas fa-shopping-cart"></i> Buy'
         button.className = "text-secondary"
         button.style.cssText = `
         display: block;
@@ -323,7 +323,7 @@ async function listaProductos(divPadre) {
             e.preventDefault()
             buy(prod)
         })
-        flyings.innerText = "Flyings"
+        flyings.innerHTML = '<i class="fas fa-plane"></i> Flyings'
         imagen.setAttribute("src", prod.foto)
         imagen.style.height = "25vh"
         imagen.style.width = "100%"
@@ -340,8 +340,8 @@ async function listaProductos(divPadre) {
         let precio = document.createElement("p")
         precio.style.color = "#444"
         producto.style.color = "#444"
-        producto.innerText = "Fly to " + prod.destino
-        precio.innerText = "$ " + prod.precio
+        producto.innerHTML = '<i class="fas fa-check-circle"></i> ' + "Fly to " + prod.destino
+        precio.innerHTML = '<i class="fas fa-check-circle"></i> ' + "$ " + prod.precio
         card.style.display = "grid"
         card.style.gridTemplateRows = "repeat(2, 1fr)"
         card.style.border = "1px solid #ccc"
@@ -371,6 +371,7 @@ function listeners() {
             window.location.hash = "#home"
             let app = document.getElementById("app")
             app.innerHTML = hero()
+            document.getElementById("social-media").classList.replace("hidden", "flex")
         }
     })
 
@@ -380,6 +381,7 @@ function listeners() {
             window.location.hash = "#products"
             let app = document.getElementById("app")
             app.innerHTML = tickets()
+            document.getElementById("social-media").classList.replace("hidden", "flex")
         }
     })
 
@@ -389,6 +391,7 @@ function listeners() {
             window.location.hash = "#contact"
             let app = document.getElementById("app")
             app.innerHTML = contacto()
+            document.getElementById("social-media").classList.replace("flex", "hidden")
         }
     })
 
@@ -397,6 +400,7 @@ function listeners() {
         if (window.location.hash != "#about") {
             window.location.hash = "#about"
             aboutF()
+            document.getElementById("social-media").classList.replace("hidden", "flex")
         }
     })
 }

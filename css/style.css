@@ -96,6 +96,14 @@ ul {
     color: var(--main-color);
 }
 
+.hidden {
+    display: none;
+}
+
+.mb-5 {
+    margin-bottom: 5px!important;
+}
+
 .w-100 {
     width: 100vw;
 }
@@ -161,6 +169,11 @@ ul {
 .mx-auto {
     margin-right: auto;
     margin-left: auto;
+}
+
+.mx-3 {
+    margin-right: 0.75em;
+    margin-left: 0.75em;
 }
 
 .my-auto {
