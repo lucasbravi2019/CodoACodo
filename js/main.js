@@ -42,12 +42,8 @@ async function contacto() {
     let phone = document.getElementById("phone")
     let email = document.getElementById("email")
     nombre.addEventListener('input', function(e) {
-        if (e.target.value == "") {
-            validateMessage(nombre)
-        } else {
-            deleteValidateMessage(nombre)
-        }
-        if (nombre.value != "" && phone.value != "" && email.value != "" && email.value.includes("@")) {
+        validateMessage(nombre)
+        if (nombre.value.trim().length > 3 && phone.value.trim().length == 10 && email.value.trim().length > 5 && email.value.includes("@")) {
             submitEnabled(submit)
         } else {
             submitDisabled(submit)
@@ -55,29 +51,23 @@ async function contacto() {
 
     })
     phone.addEventListener('input', function(e) {
-        if (e.target.value == "") {
+        var regex = /[^0-9]/g;
+        var regexN = /[0-9]/g;
+        validateMessage(phone)
+        phone.value = phone.value.replaceAll(regex, "")
+        if (phone.value.length > 10) {
+            phone.value = (e.target.value - e.data) / 10
             validateMessage(phone)
-        } else {
-            deleteValidateMessage(phone)
         }
-
-        if (nombre.value != "" && phone.value != "" && email.value != "" && email.value.includes("@")) {
+        if (nombre.value.trim().length > 3 && phone.value.trim().length == 10 && email.value.trim().length > 5 && email.value.includes("@")) {
             submitEnabled(submit)
         } else {
             submitDisabled(submit)
         }
     })
     email.addEventListener('input', function(e) {
-        if (e.target.value == "" && !e.target.value.includes("@")) {
-            validateMessage(email)
-        } else {
-            if (!e.target.value.includes("@") && e.target.value != "") {
-                validateMessage(email)
-            } else {
-                deleteValidateMessage(email)
-            }
-        }
-        if (nombre.value != "" && phone.value != "" && email.value != "" && email.value.includes("@")) {
+        validateMessage(email)
+        if (nombre.value.trim().length >= 3 && phone.value.trim().length == 10 && email.value.trim().length > 5 && email.value.includes("@")) {
             submitEnabled(submit)
         } else {
             submitDisabled(submit)
@@ -107,6 +97,45 @@ async function contacto() {
     })
 }
 
+function validateName(mensaje, child) {
+    if (child.value.trim().length == 0) {
+        mensaje.innerText = "Please fill the name";
+    }
+    if (child.value.trim().length > 0 && child.value.trim().length < 3) {
+        mensaje.innerText = "The name must contain 3 or more letters"
+    }
+    if (child.value.trim().length >= 3) {
+        deleteValidateMessage(child)
+    }
+}
+
+function validatePhone(mensaje, child) {
+    if (child.value.trim().length == 0) {
+        mensaje.innerText = "Please fill the phone";
+    }
+    if (child.value.trim().length > 0 && child.value.trim().length < 10 || child.value.trim().length > 10) {
+        mensaje.innerText = "The phone must contain 10 numbers"
+    }
+    if (child.value.trim().length == 10) {
+        deleteValidateMessage(child)
+    }
+}
+
+function validateEmail(mensaje, child) {
+    if (child.value.trim().length == 0) {
+        mensaje.innerText = "Please fill the email";
+    }
+    if (child.value.trim().length > 0 && child.value.trim().length < 5) {
+        mensaje.innerText = "The email must contain 5 letters"
+    }
+    if (!child.value.trim().includes("@") && child.value.trim().length >= 5) {
+        mensaje.innerText = "You must write a valid email (something@gmail.com)"
+    }
+    if (child.value.trim().length >= 5 && child.value.trim().includes("@")) {
+        deleteValidateMessage(child)
+    }
+}
+
 function validateMessage(child) {
     if (!document.getElementById(`validate${child.name}`)) {
         var mensaje = document.createElement("p")
@@ -116,11 +145,14 @@ function validateMessage(child) {
     }
     var mensaje = document.getElementById(`validate${child.name}`)
     mensaje.className = "col-2"
-    if (child.value == "" && !child.value.includes("@")) {
-        mensaje.innerText = `Please fill the ${child.name}`;
+    if (child.name == "person") {
+        validateName(mensaje, child)
     }
-    if (!child.value.includes("@") && child.value != "") {
-        mensaje.innerText = "Please enter a valid email"
+    if (child.name == "phone") {
+        validatePhone(mensaje, child)
+    }
+    if (child.name == "email") {
+        validateEmail(mensaje, child)
     }
 }
 
