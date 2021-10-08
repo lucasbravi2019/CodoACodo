@@ -147,7 +147,6 @@ function validateMessage(child) {
         var padre = child.parentElement.appendChild(mensaje)
     }
     var mensaje = document.getElementById(`validate${child.name}`)
-    mensaje.className = "col-2"
     if (child.name == "person") {
         validateName(mensaje, child)
     }
@@ -168,23 +167,11 @@ function deleteValidateMessage(child) {
 }
 
 function mensajeStyleSuccess(mensaje) {
-    mensaje.style.cssText = `
-    background-color: green; 
-    width: 70%;
-    padding: .75em;
-    margin: 1em auto;
-    text-align: center;
-    `
+    mensaje.classList.add("bg-success", "col-8", "mx-auto", "p-3", "m-3", "rounded-3", "text-center")
 }
 
 function mensajeStyleError(mensaje) {
-    mensaje.style.cssText = `
-    background-color: red; 
-    width: 70%;
-    padding: .75em;
-    margin: 1em auto;
-    text-align: center;
-    `
+    mensaje.classList.add("bg-danger", "col-8", "mx-auto", "p-3", "m-3", "rounded-3", "text-center")
 }
 
 function submitDisabled(submit) {
@@ -213,33 +200,29 @@ async function buy(prod) {
     let app = document.getElementById("app")
     app.innerHTML = data
     let producto = document.createElement("p")
+    producto.classList.add("p-3", "m-0", "text-xl", "font-bold")
     let numberTickets = document.createElement("p")
+    numberTickets.classList.add("p-3", "m-0")
     numberTickets.innerText = "Number of tickets"
     let quantity = document.createElement("input")
     quantity.setAttribute("type", "number")
     quantity.setAttribute("min", 0)
     quantity.setAttribute("value", 0)
-    quantity.style.cssText = "padding: 0.5em; text-align: center;"
+    quantity.classList.add("text-center", "p-2", "font-bold")
     let pay = 0
     let total = document.createElement("p")
+    total.classList.add("p-3", "m-0")
     total.innerText = "Total: $ 0.00"
     let payButton = document.createElement("button")
     payButton.setAttribute("type", "submit")
-    payButton.style.cssText = `
-    display: block;
-    width: max-content;
-    margin: 0 auto;
-    border: 2px solid var(--border-color);
-    padding: 0.75em;
-    color: var(--secondary-color)
-    `
+    payButton.classList.add("btn", "btn-primary")
     payButton.setAttribute("href", "#bought")
     payButton.innerText = "Pay"
     submitDisabled(payButton)
     console.log(payButton)
     quantity.addEventListener("input", (e) => {
         pay = quantity.value
-        total.innerText = "Total: " + pay * prod.precio
+        total.innerText = "Total: $ " + pay * prod.precio
         if (e.target.value > 0) {
             submitEnabled(payButton)
         } else {
@@ -247,6 +230,7 @@ async function buy(prod) {
         }
     })
     let precio = document.createElement("p")
+    precio.classList.add("p-3", "m-0")
     producto.innerText = "Flying ticket with destiny: " + prod.destino
     precio.innerText = "Price: $ " + prod.precio
     let buy = document.getElementById("buy")
@@ -351,7 +335,7 @@ async function listaProductos(divPadre) {
         card.style.borderRadius = "0.5em"
         div.style.backgroundColor = "#eee"
         div.style.borderRadius = "0 0 0.5em 0.5em"
-        div.style.padding = "0 0.75em 0 0.75em"
+        div.style.padding = "1em"
         div.appendChild(flyings)
         div.appendChild(producto)
         div.appendChild(precio)

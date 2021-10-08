@@ -1,20 +1,20 @@
-<form action="" method="post" class="mx-auto bg-secondary p-3 max-w-50 max-w-80 text-primary rounded-md">
+<form action="" method="post" class="mx-auto bg-secondary p-3 max-w-50 max-w-80 text-primary rounded-3">
     <fieldset>
-        <legend class="p-3">Contact</legend>
-        <div class="grid grid-cols-2 gap-4 p-3">
-            <label class="p-3 w-full sm-text-center" for="person" name="name"><i class="fas fa-user"></i> Name</label>
-            <input class="p-3 w-full sm-text-center" type="text" placeholder="Ana" id="person" name="person">
+        <legend class="p-3 text-center">Contact</legend>
+        <div class="mb-3 col-10 mx-auto">
+            <label class="form-label" for="person" name="name"><i class="fas fa-user"></i> Name</label>
+            <input class="form-control" type="text" placeholder="Ana" id="person" name="person">
         </div>
-        <div class="grid grid-cols-2 gap-4 p-3">
-            <label class="p-3 w-full sm-text-center" for="phone"><i class="fas fa-phone"></i> Phone</label>
-            <input class="p-3 w-full sm-text-center" type="tel" placeholder="261 4545454" id="phone" name="phone">
+        <div class="mb-3 col-10 mx-auto">
+            <label class="form-label" for="phone"><i class="fas fa-phone"></i> Phone</label>
+            <input class="form-control" type="tel" placeholder="261 4545454" id="phone" name="phone">
         </div>
-        <div class="grid grid-cols-2 gap-4 p-3">
-            <label class="p-3 w-full sm-text-center" for="email"><i class="fas fa-envelope"></i> Email</label>
-            <input class="p-3 w-full sm-text-center" type="email" placeholder="person@gmail.com" id="email" name="email">
+        <div class="mb-3 col-10 mx-auto">
+            <label class="form-label" for="email"><i class="fas fa-envelope"></i> Email</label>
+            <input class="form-control" type="email" placeholder="person@gmail.com" id="email" name="email">
         </div>
     </fieldset>
-    <div class="w-full">
+    <div class="">
         <button id="send" type="submit" class="btn btn-primary p-3 mx-auto block my-3 text-primary rounded-md"><i class="fas fa-paper-plane"></i> Enviar</button>
     </div>
 </form>

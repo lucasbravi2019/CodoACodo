@@ -29,10 +29,10 @@ body {
 }
 
 a {
-    color: var(--main-color);
+    color: var(--main-color)!important;
     text-decoration: none;
     display: block;
-    transition: color 0.3s ease-in-out;
+    transition: color 0.3s ease-in-out!important;
 }
 
 form {
@@ -44,7 +44,7 @@ fieldset {
 }
 
 a:hover {
-    color: var(--secondary-color);
+    color: var(--secondary-color)!important;
 }
 
 p {
@@ -168,11 +168,15 @@ ul {
 }
 
 .text-primary {
-    color: var(--main-color);
+    color: var(--main-color)!important;
 }
 
 .text-secondary {
-    color: var(--secondary-color);
+    color: var(--secondary-color)!important;
+}
+
+a.text-secondary:hover {
+    color: var(--main-color)!important;
 }
 
 @media (max-width: 768px) {
@@ -194,11 +198,11 @@ ul {
 }
 
 .bg-primary {
-    background-color: var(--background-color);
+    background-color: var(--background-color)!important;
 }
 
 .bg-secondary {
-    background-color: var(--secondary-color)
+    background-color: var(--secondary-color)!important;
 }
 
 .absolute {
@@ -357,6 +361,11 @@ ul {
 }
 
 .btn-primary {
-    background-color: var(--border-color);
-    color: var(main-color);
+    background-color: var(--border-color)!important;
+    color: var(main-color)!important;
+}
+
+.btn-primary:hover {
+    color: var(--background-color)!important;
+    font-weight: bold;
 }
