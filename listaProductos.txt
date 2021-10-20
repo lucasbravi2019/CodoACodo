@@ -1,50 +1,51 @@
 [{
-    "destino": "Argentina",
-    "foto": "img/argentina.png",
-    "precio": 1600
-},
-{
-    "destino": "Canada",
-    "foto": "img/canada.jpg",
-    "precio": 3000
-},
-{
-    "destino": "Russia",
-    "foto": "img/rusia.jpg",
-    "precio": 4300
-},
-{
-    "destino": "Holland",
-    "foto": "img/holanda.jpg",
-    "precio": 3500
-},
-{
-    "destino": "Scotland",
-    "foto": "img/escocia.jpg",
-    "precio": 3500
-},
-{
-    "destino": "France",
-    "foto": "img/francia.jpg",
-    "precio": 3200
-},
-{
-    "destino": "Spain",
-    "foto": "img/espana.jpg",
-    "precio": 3200
-},
-{
-    "destino": "Brasil",
-    "foto": "img/brasil.jpg",
-    "precio": 2000
-},
-{
-    "destino": "Italy",
-    "foto": "img/italia.jpg",
-    "precio": 3200
-},
-{
-    "destino": "Germany",
-    "foto": "img/alemania.jpg",
-    "precio": 3200
-}]
+        "destino": "Argentina",
+        "foto": "img/argentina.png",
+        "precio": 1600
+    },
+    {
+        "destino": "Canada",
+        "foto": "img/canada.jpg",
+        "precio": 3000
+    },
+    {
+        "destino": "Russia",
+        "foto": "img/rusia.jpg",
+        "precio": 4300
+    },
+    {
+        "destino": "Holland",
+        "foto": "img/holanda.jpg",
+        "precio": 3500
+    },
+    {
+        "destino": "Scotland",
+        "foto": "img/escocia.jpg",
+        "precio": 3500
+    },
+    {
+        "destino": "France",
+        "foto": "img/francia.jpg",
+        "precio": 3200
+    },
+    {
+        "destino": "Spain",
+        "foto": "img/espana.jpg",
+        "precio": 3200
+    },
+    {
+        "destino": "Brasil",
+        "foto": "img/brasil.jpg",
+        "precio": 2000
+    },
+    {
+        "destino": "Italy",
+        "foto": "img/italia.jpg",
+        "precio": 3200
+    },
+    {
+        "destino": "Germany",
+        "foto": "img/alemania.jpg",
+        "precio": 3200
+    }
+]
