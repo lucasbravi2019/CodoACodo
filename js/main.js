@@ -1,17 +1,15 @@
 async function navigation() {
-    let response = await fetch("../templates/nav.html")
-    let data = await response.text()
     let nav = document.getElementById("nav")
-    nav.innerHTML = data
+    let response = await fetch("../templates/nav.html")
+    let data = await response.text().then(datos => nav.innerHTML = datos)
     listeners()
     dropdown()
 }
 
 async function hero(home, products, contact, about) {
-    let response = await fetch("../templates/hero.html")
-    let data = await response.text()
     let app = document.getElementById("app")
-    app.innerHTML = data
+    let response = await fetch("../templates/hero.html")
+    let data = await response.text().then(datos => app.innerHTML = datos)
     let productos = document.getElementById("tickets")
     productos.addEventListener("click", (e) => {
         e.preventDefault()
@@ -26,19 +24,17 @@ async function hero(home, products, contact, about) {
 }
 
 async function tickets() {
-    let response = await fetch("../templates/products.html")
-    let data = await response.text()
     let app = document.getElementById("app")
-    app.innerHTML = data
+    let response = await fetch("../templates/products.html")
+    let data = await response.text().then(datos => app.innerHTML = datos)
     let divPadre = document.getElementById("lista")
     listaProductos(divPadre)
 }
 
 async function contacto() {
-    let response = await fetch("../templates/contact.html")
-    let data = await response.text()
     let app = document.getElementById("app")
-    app.innerHTML = data
+    let response = await fetch("../templates/contact.html")
+    let data = await response.text().then(datos => app.innerHTML = datos)
     let submit = document.getElementById("send")
     submitDisabled(submit)
     let nombre = document.getElementById("person")
@@ -187,18 +183,16 @@ function submitEnabled(submit) {
 }
 
 async function aboutF() {
-    let response = await fetch("../templates/about.html")
-    let data = await response.text()
     let app = document.getElementById("app")
-    app.innerHTML = data
+    let response = await fetch("../templates/about.html")
+    let data = await response.text().then(datos => app.innerHTML = datos)
 }
 
 async function buy(prod) {
     window.location.hash = "#buy"
-    let response = await fetch("../templates/bought.html")
-    let data = await response.text()
     let app = document.getElementById("app")
-    app.innerHTML = data
+    let response = await fetch("../templates/bought.html")
+    let data = await response.text().then(datos => app.innerHTML = datos)
     let producto = document.createElement("p")
     producto.classList.add("p-3", "m-0", "text-xl", "font-bold")
     let numberTickets = document.createElement("p")
@@ -270,10 +264,9 @@ async function bought() {
 }
 
 async function footer() {
-    let response = await fetch("../templates/footer.html")
-    let data = await response.text()
     let footer = document.getElementById("footer")
-    footer.innerHTML = data
+    let response = await fetch("../templates/footer.html")
+    let data = await response.text().then(datos => footer.innerHTML = datos)
 }
 
 async function listaProductos(divPadre) {
